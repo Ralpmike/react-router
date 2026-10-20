@@ -8,7 +8,7 @@ function AppBar() {
         <h1>RouterApp</h1>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/products">Home</NavLink>
           </li>
           <li>
             <NavLink to="/about">About</NavLink>
