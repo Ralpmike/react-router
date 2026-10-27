@@ -1,22 +1,23 @@
 import { Link } from "react-router";
-import { signInUser } from "../services/services";
+import { signUpUser } from "../services/services";
 
 export default function SignupForm() {
 
   const handleSignUp = async (formData) => {
+    formData.append("id", Math.floor((Math.random() * 1000) + 1));
     const user = Object.fromEntries(formData);
-    console.log(user)
-    const data = await signInUser(user)
+    console.log(user);
+    const data = await signUpUser(user);
 
-    console.log(data)
-   
+    
 
-  }
+    console.log(data);
+  };
   return (
     <div className="form">
-      <h1 >Signup</h1>
+      <h1>Signup</h1>
       <form action={handleSignUp}>
-        <input type="text" placeholder="name" name="name" />
+        <input type="text" placeholder="username" name="username" />
         <input type="email" placeholder="email" name="email" />
         <input type="password" placeholder="password" name="password" />
         <button type="submit">Signup</button>

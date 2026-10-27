@@ -1,6 +1,11 @@
+const user ={
+  username: "godiya",
+  password: "1234"
+}
+
 const BASE_URL = "https://fakestoreapi.com";
 
-export async function getAllProducts({signal}) {
+export async function getAllProducts({ signal }) {
   try {
     const response = await fetch(`${BASE_URL}/products`, { signal });
     const data = await response.json();
@@ -30,7 +35,7 @@ export async function getSingleProduct(productId) {
   }
 }
 
-export async function signInUser(user){
+export async function signUpUser(user) {
   try {
     const response = await fetch(`${BASE_URL}/users`, {
       method: "POST",
@@ -43,32 +48,27 @@ export async function signInUser(user){
 
     if (!response.ok) {
       throw new Error(`${response.status} ${response.statusText}`);
-    } 
-      return data;
-    
+    }
+    return data;
   } catch (error) {
     console.error(error);
   }
 }
 
+export async function loginUser(credentials) {
+  
+console.log(credentials);
+  try {
+    const { username, password } = credentials;
 
-export async function loginUser({credentials}){
-    try {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(`${response.status} ${response.statusText}`);
-    } 
-      return data;
+    if(user.username === username && user.password === password) {
+      return {...credentials, token: "qwerty123456"};
+    }else{
+      throw new Error("Invalid username or password");
+    }  
     
   } catch (error) {
-    console.error(error);
+    return error;
   }
+  
 }
