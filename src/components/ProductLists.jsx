@@ -9,7 +9,7 @@ function ProductLists() {
   return (
     <div className={styles.productLists}>
       {
-        products.map((product) => (
+        products?.map((product) => (
           <Product key={product.id} product={product} />
         ))
       }

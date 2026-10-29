@@ -12,9 +12,9 @@ export default function ProductContextApi({ children }) {
 
   useEffect(() => {
     const controller = new AbortController();
-    const signal = controller.signal;
+    
     const fetchProducts = async () => {
-      const data = await getAllProducts(signal);
+      const data = await getAllProducts(controller);
       setProducts(data);
     };
 
